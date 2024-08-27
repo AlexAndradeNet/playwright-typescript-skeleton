@@ -1,0 +1,12 @@
++ tsconfig + style
++ Eslint + Prettier + Airbnb Styleguide
++ Make explicit type
+- Random tests execution
++ npm aliases
++ Sonarqube
++ Gherkin
++ VsCode settings
++ Idea settings
++ Husky
++ GitHub Actions
+- Documentation

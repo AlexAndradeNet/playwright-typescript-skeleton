@@ -1,0 +1,50 @@
+.DS_Store
+
+# Node.js dependencies
+node_modules/
+
+# Playwright specifics
+playwright-report/
+test-results/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+### Node Patch ###
+# Serverless Webpack directories
+.webpack/
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+# Jetbrains IDEs configuration files.
+# This applies to IntelliJ, WebStorm, PyCharm, RubyMine, PhpStorm, AppCode,
+# CLion, Rider, DataGrip, GoLand, Cursive, etc.
+# Ignore everything in the folder .idea except .idea/externalDependencies.xml
+**/.idea/*
+!**/.idea/externalDependencies.xml
+*.iml
+*.iws
+*.ipr
+
+# SonarQube
+.scannerwork/

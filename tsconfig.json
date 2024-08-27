@@ -1,0 +1,35 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "commonjs",
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "noImplicitAny": true,
+        // Requires explicit types for variables and parameters
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "types": ["node", "playwright"],
+        "strictNullChecks": true,
+        // Ensures null and undefined are handled explicitly
+        "strictFunctionTypes": true,
+        // Checks function types more rigorously
+        "strictBindCallApply": true,
+        // Checks the use of bind, call, and apply methods more strictly
+        "strictPropertyInitialization": true,
+        // Checks that class properties are initialized correctly
+        "noImplicitThis": true,
+        // Ensures 'this' is used correctly
+        "alwaysStrict": true
+        // Parses in strict mode and emits "use strict" for each source file
+    },
+    "exclude": ["node_modules"]
+}
