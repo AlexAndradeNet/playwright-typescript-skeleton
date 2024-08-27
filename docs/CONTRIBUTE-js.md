@@ -82,7 +82,7 @@ _Robert C. Martin (a.k.a. Uncle Bob)_
 To run the linter for Java, execute the following command:
 
 ````bash
-npm run lintAll
+npm run lint
 ````
 
 ### Run static code analysis
