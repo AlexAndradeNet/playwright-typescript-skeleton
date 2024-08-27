@@ -72,6 +72,7 @@ necessary dependencies:
 
 ```bash
 npm install
+npx playwright install
 ```
 
 ### Running the Tests
