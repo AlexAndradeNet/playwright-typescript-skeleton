@@ -553,40 +553,54 @@ async function checkNumberOfTodosInLocalStorage(
     page: Page,
     expected: number
 ): Promise<JSHandle<boolean>> {
-    return page.waitForFunction(
-        e =>
-            JSON.parse(localStorage.getItem('react-todos') ?? '[]').length ===
-            e,
-        expected
-    );
+    return page.waitForFunction((aliasForTheExpectedParameter: number) => {
+        // Safely parse and type the local storage data as an array of the Todos' objects
+        const todos: Todo[] = JSON.parse(
+            localStorage.getItem('react-todos') ?? '[]'
+        ) as Todo[];
+
+        // Check if todos is an array and if its length matches the expected number
+        return (
+            Array.isArray(todos) &&
+            todos.length === aliasForTheExpectedParameter
+        );
+    }, expected);
 }
 
 async function checkNumberOfCompletedTodosInLocalStorage(
     page: Page,
     expected: number
 ): Promise<JSHandle<boolean>> {
-    return page.waitForFunction(
-        e =>
-            JSON.parse(localStorage.getItem('react-todos') ?? '[]').filter(
-                (todo: Todo) => todo.completed
-            ).length === e,
-        expected
-    );
+    return page.waitForFunction((aliasForTheExpectedParameter: number) => {
+        // Safely parse the local storage item with a default of an empty array string
+        const todos: Todo[] = JSON.parse(
+            localStorage.getItem('react-todos') ?? '[]'
+        ) as Todo[];
+
+        // Filter todos based on the 'completed' property and compare the length
+        const completedTodosCount: number = todos.filter(
+            todo => todo.completed
+        ).length;
+
+        return completedTodosCount === aliasForTheExpectedParameter;
+    }, expected);
 }
 
 async function checkTodosInLocalStorage(
     page: Page,
     title: string
-): Promise<boolean> {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    return page.waitForFunction(
-        (t: string) =>
-            JSON.parse(localStorage.getItem('react-todos') ?? '[]')
-                .map((todo: Todo) => todo.title)
-                .includes(t),
-        title
-    );
+): Promise<JSHandle<boolean>> {
+    return page.waitForFunction((aliasForTheExpectedTitleParameter: string) => {
+        // Parse local storage item with a default value and type assertion
+        const todos: Todo[] = JSON.parse(
+            localStorage.getItem('react-todos') ?? '[]'
+        ) as Todo[];
+
+        // Map titles and check for the presence of the specified title
+        return todos
+            .map(todo => todo.title)
+            .includes(aliasForTheExpectedTitleParameter);
+    }, title);
 }
 
 async function modifyFirstTodoItemAndPressKey(
