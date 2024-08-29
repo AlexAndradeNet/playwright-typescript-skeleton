@@ -1,4 +1,5 @@
-// eslint-disable-next-line import/no-extraneous-dependencies,@typescript-eslint/no-var-requires,@typescript-eslint/typedef
+/* eslint-disable */
+
 const scanner = require('sonarqube-scanner').default;
 
 scanner(

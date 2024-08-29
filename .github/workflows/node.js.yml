@@ -29,7 +29,7 @@ jobs:
                 run: npx playwright install --with-deps
 
             -   name: Run Spotless/Linter check
-                run: npm run lint
+                run: npm run lint-ci
                 continue-on-error: false
 
             -   name: Run tests

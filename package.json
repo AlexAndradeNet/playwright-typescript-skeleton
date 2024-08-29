@@ -13,10 +13,11 @@
         "lintFix:feature": "npx gherkin-lint --ignore .gitignore --config .gherkin-lintrc.json",
         "lintFix:json": "npx prettier --ignore-path .gitignore '**/*.json' --list-different --write",
         "lintFix:js": "npx eslint --ignore-path .gitignore --fix .",
-        "lint": "npm run lintFix:feature && npm run lintFix:json && npm run lintFix:js",
+        "lint": "npm run lintFix:feature ; npm run lintFix:json ; npm run lintFix:js",
+        "lint-ci": "npm run lintFix:feature && npm run lintFix:json && npm run lintFix:js",
         "prepare": "husky",
         "postinstall": "husky",
-        "pre-commit": "npm run lint",
+        "pre-commit": "npm run lint-ci",
         "pre-push": "npm run pre-commit && npm run test"
     },
     "keywords": [],

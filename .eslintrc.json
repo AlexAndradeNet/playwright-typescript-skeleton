@@ -9,6 +9,7 @@
         "airbnb-typescript/base",
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:playwright/recommended",
         "prettier"
     ],
@@ -24,6 +25,7 @@
         "indent": ["error", 4],
         "prettier/prettier": "warn",
         "max-len": "off",
+        "no-plusplus": "off",
         "@typescript-eslint/no-inferrable-types": "off",
         "@typescript-eslint/lines-between-class-members": "off",
         "@typescript-eslint/no-use-before-define": "off",
@@ -31,6 +33,10 @@
         "@typescript-eslint/explicit-function-return-type": ["error"],
         // Enforce explicit return and argument types on exported functions' and classes' public class methods
         "@typescript-eslint/explicit-module-boundary-types": ["error"],
+        // Disable preferring arrow functions for callbacks
+        "prefer-arrow-callback": "off",
+        // Enforce function declarations over expressions
+        "func-style": ["error", "declaration"],
         // Require explicit types for variables and properties
         "@typescript-eslint/typedef": [
             "error",
@@ -44,6 +50,18 @@
                 "variableDeclaration": true,
                 "variableDeclarationIgnoreFunction": true
             }
-        ]
+        ],
+        // TypeScript-specific rules aligning with your tsconfig settings
+        "@typescript-eslint/no-unused-vars": ["error", { "args": "none" }], // Similar to noUnusedLocals and noUnusedParameters
+        "@typescript-eslint/strict-boolean-expressions": "error", // Similar to strict null checks
+        "@typescript-eslint/no-floating-promises": "error", // Ensures promises are handled properly
+        "@typescript-eslint/no-misused-promises": "error", // Checks promise usage
+        "@typescript-eslint/consistent-type-assertions": "error", // Ensure consistent use of type assertions
+        "@typescript-eslint/no-explicit-any": "error", // Disallow the use of 'any' type
+        "@typescript-eslint/no-implied-eval": "error", // Prevent the use of eval()-like methods
+        "@typescript-eslint/no-unnecessary-type-assertion": "error", // Avoid unnecessary type assertions
+        "@typescript-eslint/no-this-alias": "error", // Disallow aliasing 'this'
+        "no-fallthrough": "error", // No fallthrough cases in switch statements, similar to noFallthroughCasesInSwitch
+        "strict": ["error", "global"] // Enforce strict mode
     }
 }
