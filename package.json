@@ -5,7 +5,8 @@
     "type": "module",
     "main": "index.js",
     "scripts": {
-        "test": "npx playwright test",
+        "test": "npm run test-ci; npm run test:report",
+        "test-ci": "npx playwright test",
         "test-headed": "npm run test --headed --project=chromium",
         "test-interactive": "npm run test --ui",
         "test:report": "npx playwright show-report",
@@ -19,7 +20,7 @@
         "prepare": "husky",
         "postinstall": "husky",
         "pre-commit": "npm run lint-ci",
-        "pre-push": "npm run pre-commit && npm run test",
+        "pre-push": "npm run pre-commit && npm run test-ci",
         "ts-check": "npx tsc --noEmit"
     },
     "keywords": [],
