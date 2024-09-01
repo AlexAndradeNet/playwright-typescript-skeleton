@@ -2,14 +2,15 @@
     "name": "playwright-typescript-skeleton",
     "version": "1.0.0",
     "description": "",
+    "type": "module",
     "main": "index.js",
     "scripts": {
         "test": "npx playwright test",
         "test-headed": "npm run test --headed --project=chromium",
         "test-interactive": "npm run test --ui",
-        "test-report": "npx playwright show-report",
-        "sonar-unix": "node scripts/sonar-project.js",
-        "sonar-windows": "node scripts\\sonar-project.js",
+        "test:report": "npx playwright show-report",
+        "sonar-unix": "node scripts/sonar/sonar-project.cjs",
+        "sonar-windows": "node scripts\\sonar\\sonar-project.cjs",
         "lintFix:feature": "npx gherkin-lint --ignore .gitignore --config .gherkin-lintrc.json",
         "lintFix:json": "npx prettier --ignore-path .gitignore '**/*.json' --list-different --write",
         "lintFix:js": "npx eslint --ignore-path .gitignore --fix .",
@@ -18,7 +19,8 @@
         "prepare": "husky",
         "postinstall": "husky",
         "pre-commit": "npm run lint-ci",
-        "pre-push": "npm run pre-commit && npm run test"
+        "pre-push": "npm run pre-commit && npm run test",
+        "ts-check": "npx tsc --noEmit"
     },
     "keywords": [],
     "author": "",
@@ -28,6 +30,8 @@
         "dotenv": "^16.4.5"
     },
     "devDependencies": {
+        "@eslint/compat": "^1.1.1",
+        "@eslint/eslintrc": "^3.1.0",
         "@eslint/js": "^9.9.1",
         "@types/eslint__js": "^8.42.3",
         "@types/node": "^22.5.0",
@@ -37,14 +41,16 @@
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-airbnb-typescript": "^18.0.0",
         "eslint-config-prettier": "^9.1.0",
+        "eslint-import-resolver-typescript": "^3.6.3",
         "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-playwright": "^1.6.2",
         "eslint-plugin-prettier": "^5.2.1",
         "gherkin-lint": "^4.2.4",
+        "globals": "^15.9.0",
         "husky": "^9.1.5",
         "prettier": "^3.3.3",
         "sonarqube-scanner": "^4.2.1",
         "typescript": "^5.5.4",
-        "typescript-eslint": "^8.2.0"
+        "typescript-eslint": "^8.3.0"
     }
 }
