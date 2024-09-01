@@ -6,6 +6,7 @@ node_modules/
 # Playwright specifics
 playwright-report/
 test-results/
+.run/
 
 # Logs
 *.log
