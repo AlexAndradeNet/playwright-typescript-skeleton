@@ -27,10 +27,11 @@ jobs:
                     path: |
                         ~/.npm
                         **/node_modules
-                        ~/.cache/ms-playwright
-                    key: npm-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+                        ~/.cache/poetry
+                        ~/.run/reports
+                    key: cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
                     restore-keys: |
-                        npm-cache-${{ runner.os }}-
+                        cache-${{ runner.os }}-
                     save-always: true
 
             -   name: Install dependencies if needed
@@ -57,4 +58,4 @@ jobs:
                 uses: actions/upload-artifact@v4
                 with:
                     name: playwright-reports
-                    path: .run/reports
+                    path: .run
