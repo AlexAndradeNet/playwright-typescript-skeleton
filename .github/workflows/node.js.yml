@@ -27,11 +27,11 @@ jobs:
                     path: |
                         ~/.npm
                         **/node_modules
-                        ~/.cache/poetry
-                        ~/.run/reports
-                    key: cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+                        ~/.cache/ms-playwright
+                        ~/.run
+                    key: npm-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
                     restore-keys: |
-                        cache-${{ runner.os }}-
+                        npm-cache-${{ runner.os }}-
                     save-always: true
 
             -   name: Install dependencies if needed
@@ -52,10 +52,13 @@ jobs:
             -   name: Run tests
                 run: npm run test-ci
 
+            -   name: Generate reports
+                run: npm run test:report
+
             # Upload Cypress Reports as Artifacts
-            -   name: Upload Playwright Reports
+            -   name: Upload Reports
                 if: always()  # Run always regardless of previous step results
                 uses: actions/upload-artifact@v4
                 with:
-                    name: playwright-reports
-                    path: .run
+                    name: reports
+                    path: .run/reports
