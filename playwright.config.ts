@@ -20,17 +20,22 @@ dotenv.config({ path: path.resolve(dirname, '.env') });
  */
 export default defineConfig({
     testDir: './src/tests-examples',
+    outputDir: './.run/test-results',
     /* Run tests in files in parallel */
     fullyParallel: true,
     /* Fail the build on CI if you accidentally left test.only in the source code. */
-    forbidOnly: !(process.env.CI == null),
+    forbidOnly: process.env.CI != null,
     /* Retry on CI only */
     retries: process.env.CI != null ? 2 : 0,
     /* Opt out of parallel tests on CI. */
     workers: process.env.CI != null ? 1 : undefined,
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
-        ['html', { outputFolder: './.run/reports/report-html', open: 'never' }],
+        ['html', { outputFolder: './.run/reports/playwright', open: 'never' }],
+        [
+            'allure-playwright',
+            { resultsDir: './.run/reports/allure/results', open: 'never' },
+        ],
     ],
     /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
     use: {
