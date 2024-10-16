@@ -114,17 +114,21 @@ should be generated automatically.
 
 ### Opening Allure Report
 
-To open the generated Allure report locally, run the following command:
+Option 1: Open local reports:
 
 ```bash
 npm run test:report:open
 ```
 
-Alternatively, you can download the reports directly from GitHub Actions:
+Option 2: Open online reports:
+
+https://alexandradenet.github.io/playwright-typescript-skeleton
+
+Option 3: Download GitHub Actions artifact:
 
 1. Navigate to your GitHub repository.
-2. Go to `Actions > [Latest Action] > Artifacts > reports.zip`.
-3. Extract the `reports.zip` file, then open `index.html` using Chrome:
+2. Go to `Actions > [Latest Action] > Artifacts >  github-pages`.
+3. Extract the `github-pages.zip` file, then open `index.html` using Chrome:
 
     ```bash
     open -a "Google Chrome" --args --allow-file-access-from-files "$(pwd)/.run/reports/allure/index.html"
